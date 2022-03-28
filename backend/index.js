@@ -4,12 +4,11 @@ const app = express();
 
 connectDB();
 
-app.get('/', (req, res) => {
-    res.send('API Running');
-})
+// initial middleware
+app.use(express.json({extended:true}));
 
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
 
-const PORT = process.env.PORT || 5001
+const PORT = process.env.PORT || 5000
 app.listen(PORT, () => console.log(`Server listening port ${PORT}`));
